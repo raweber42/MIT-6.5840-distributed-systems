@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"6.5840/mr"
+	"6.5840/mr/logger"
 )
 
 func main() {
@@ -23,10 +24,13 @@ func main() {
 		os.Exit(1)
 	}
 
+	logger.Log.Info("$$$$$$$$$$$$$$$$$$ COORDINATOR STARTED $$$$$$$$$$$$$$$$$$")
 	m := mr.MakeCoordinator(os.Args[1:], 10)
 	for m.Done() == false {
 		time.Sleep(time.Second)
 	}
+
+	logger.Log.Info("$$$$$$$$$$$$$$$$$$ COORDINATOR FINISHED $$$$$$$$$$$$$$$$$$")
 
 	time.Sleep(time.Second)
 }
